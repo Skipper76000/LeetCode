@@ -1,11 +1,15 @@
 class Solution {
 public:
     int mostWordsFound(vector<string>& sentences) {
-    int mx= 0;
-        for(string &i : sentences) {
-            int c=1 + count(i.begin() ,i.end() , ' ');
-            mx=max(mx ,c );
+
+          int ans = 0;
+        for (auto& s : sentences) {
+            int cnt = 1 + count(s.begin(), s.end(), ' ');
+            ans = max(ans, cnt);
         }
-        return mx;
-    }
+        return ans;
+    }   
+
+        
+    
 };
