@@ -17,7 +17,7 @@ public:
         vector<int> v;
         int mi=INT_MAX;
         for(auto &i :nums1){
-            if(check(nums2 , i , 0 , nums2.size()-1)){ mi =min(mi,i);}
+            if(check(nums2 , i , 0 , nums2.size()-1)){ mi =min(mi,i); break;}
         }
         return mi==INT_MAX?-1:mi;
     }
