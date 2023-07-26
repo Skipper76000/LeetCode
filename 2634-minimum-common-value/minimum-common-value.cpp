@@ -15,17 +15,9 @@ private:
 public:
     int getCommon(vector<int>& nums1, vector<int>& nums2) {
         vector<int> v;
-        set<int> s;
-
-        for(auto &i: nums1) {
-            s.insert(i);
-        }
-        for(auto &i : nums2) {
-            s.insert(i);
-        }
         int mi=INT_MAX;
-        for(auto &i :s){
-            if(check(nums2 , i , 0 , nums2.size()-1) && check(nums1 , i , 0 , nums1.size()-1)){ mi =min(mi,i);}
+        for(auto &i :nums1){
+            if(check(nums2 , i , 0 , nums2.size()-1)){ mi =min(mi,i);}
         }
         return mi==INT_MAX?-1:mi;
     }
