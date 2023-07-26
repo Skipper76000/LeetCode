@@ -17,14 +17,17 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         // return solve(nums , 0 , nums.size());
-        int a=nums.size();
-        a=(a*(a+1))/2;
-        int sum=0;
-        for(auto &i:nums) {
-            sum+=i;
+        
+        int a=0;
+
+        for(auto &i: nums) {
+            a^=i;
         }
 
-        return a-sum;
+        for(int i =0 ; i <= nums.size(); i++) {
+            a^=i;
+        }
+        return a;
 
     }
 };
