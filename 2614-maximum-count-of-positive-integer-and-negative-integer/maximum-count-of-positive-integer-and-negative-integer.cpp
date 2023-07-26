@@ -1,29 +1,26 @@
 class Solution {
 private:
-    int solve1(vector<int>& v , int s , int e ) {
-        if(s > e) return s;
+    tuple<int, int, int> countNegZeroPos(vector<int>& nums, int s, int e) {
+        if (s > e) return make_tuple(0, 0, 0);
 
-        int mid = s +(e -s)/2;
+        int mid = s + (e - s) / 2;
 
-        if(v[mid] < 0) return solve1(v ,mid+1, e);
-        else return solve1(v, s, mid-1);
+        tuple<int, int, int> left = countNegZeroPos(nums, s, mid - 1);
+        tuple<int, int, int> right = countNegZeroPos(nums, mid + 1, e);
 
+        int negCount = get<0>(left) + get<0>(right) + (nums[mid] < 0 ? 1 : 0);
+        int zeroCount = get<1>(left) + get<1>(right) + (nums[mid] == 0 ? 1 : 0);
+        int posCount = get<2>(left) + get<2>(right) + (nums[mid] > 0 ? 1 : 0);
+
+        return make_tuple(negCount, zeroCount, posCount);
     }
-    
-    int solve2(vector<int>& v , int s , int e ) {
-        if(s > e) return s;
 
-        int mid = s +(e -s)/2;
-
-        if(v[mid] > 0) return solve2(v ,s, mid-1);
-        else return solve2(v, mid+1, e);
-
-    }
 public:
     int maximumCount(vector<int>& nums) {
-        int a=solve1(nums , 0 ,nums.size()-1);
-        int b=nums.size()- solve2(nums , 0 ,nums.size()-1);
-        cout<<a<<" "<<b<<"\n";
-        return max(a,b);
+        tuple<int, int, int> counts = countNegZeroPos(nums, 0, nums.size() - 1);
+        int a = get<0>(counts);
+        int b = get<2>(counts);
+
+        return max(a, b);
     }
 };
