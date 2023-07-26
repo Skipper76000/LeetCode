@@ -1,11 +1,15 @@
 class Solution {
+
+private:
+    int solve(int n, long long x) {
+        if(x*x <= n) return x;
+        else return solve(n , (x+(n/x))/2); 
+    }
+
 public:
     int mySqrt(int x) {
-        if (x == 0) return 0;
-        long long int sqrtX = x; // Convert to long long to prevent overflow
-        while (sqrtX * sqrtX > x) {
-            sqrtX = (sqrtX + x / sqrtX) / 2;
-        }
-        return static_cast<int>(sqrtX);
+        long long n=x;
+        int a= solve(x , n);
+        return a;
     }
 };
