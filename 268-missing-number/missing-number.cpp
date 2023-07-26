@@ -1,33 +1,20 @@
 class Solution {
-// private:
-
-//     int solve(vector<int>& v, int s, int e) {
-//         if (s > e) return -1;
-
-//         int mid = s +(e - s)/2;
-
-//         if(v[mid] == mid){
-//             return solve(v , mid+1, e);
-//             return solve(v , mid-1, e);
-//         }else{
-//             return mid-1;
-//         }
-//     }
-
 public:
     int missingNumber(vector<int>& nums) {
-        // return solve(nums , 0 , nums.size());
-        
-        int a=0;
-
-        for(auto &i: nums) {
-            a^=i;
+        int n  = nums.size();
+        int ans = 0;
+        map<int, int>m;
+        for(int i=0;i<=n;i++){
+            m.insert({i,0});
         }
-
-        for(int i =0 ; i <= nums.size(); i++) {
-            a^=i;
+        for(int i=0;i<n;i++){
+            m[nums[i]]++;
         }
-        return a;
-
+        for(auto i: m){
+            if(i.second == 0){
+                ans = i.first;
+            }
+        }
+        return ans;
     }
 };
