@@ -14,8 +14,9 @@ private:
 
 public:
     vector<int> searchRange(vector<int>& v, int k) {
-        int idx1 =lower_b(v, 0 , v.size()-1 ,k );
-        int idx2= lower_b(v, 0 , v.size()-1 ,k+1 )-1;
+        int n=v.size()-1;
+        int idx1 =lower_b(v, 0 , n,k );
+        int idx2= lower_b(v, 0 , n,k+1 )-1;
         if(idx1 < v.size() && v[idx1] == k) return {idx1,idx2};
         else return {-1,-1};
 
