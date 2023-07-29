@@ -11,13 +11,15 @@ class Solution {
 private:
 
     int bin(int s , int e) {
+        
         if(s>e) return -1;
 
         int mid =s +(e-s)/2;
-        int a=guess(mid);
-        if(a == 0) return mid;
-        if(a == -1) return bin(s ,mid-1);
+        // int a=guess(mid);
+        if(guess(mid) == 0) return mid;
+        if(guess(mid) == -1) return bin(s ,mid-1);
         else return bin(mid+1, e);
+
     }
 
 public:
