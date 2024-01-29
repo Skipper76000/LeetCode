@@ -5,7 +5,7 @@ public:
 
     void rec(int k , int i , int n, vector<int >& s) {
 
-        if(i == v.size() ) {
+        if(i == 9 ) {
 
             if(s.size() == k){
                 int sum = 0 ;
