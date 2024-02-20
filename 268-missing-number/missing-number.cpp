@@ -6,6 +6,7 @@ public:
            s+=i ;
        } 
        int ts = (n*(n+1))/2;
-       return ts-s;
+       n = ts - s;
+       return n ;
     }
 };
